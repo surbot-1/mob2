@@ -129,8 +129,8 @@ document.getElementById("divCanv").appendChild(canv);
        var  x = touches[0].pageX; cordx = x;
        var  y = touches[0].pageY; cordy = y;
 	  
-       if (x>0 && x<72 && y>0 && y<144) { // bk
-              ds1();
+       if (x>0 && x<72 && y>0 && y<144) {          // back
+               ds1();
        } else if (x>72 && x<108 && y>0 && y<144) {  // dp
        } else if (x>108 && x<740 && y>0 && y<144) {  // space
        } else if (x>740 && x<800 && y>0 && y<144) {  // video call
@@ -138,8 +138,8 @@ document.getElementById("divCanv").appendChild(canv);
        } else if (x>1000 && x<1040 && y>0 && y<144) {  // option
        } else if (x>0 && x<1080 && y>144 && y<1392) {  // message_field
        } else if (x>0 && x<1080 && y>1392 && y<1536) {  // type_field
-       } else if (x>0 && x<1080 && y>1536 && y<2176) {  // keypad
-	       keypad();
+       }  else if (x>0 && x<1080 && y>1536 && y<2176) {  // keypad
+	       keypad(); 
        }
      }
      cvs.addEventListener("touchend", handleEnd, false);
@@ -151,9 +151,143 @@ document.getElementById("divCanv").appendChild(canv);
 	
 <script>
 	
-  function keypad() {
-  }
+
+	
+function keypad() {
+	
+     var keyChar;
+     var keyHex;
+	
+function readQwerty() {
+
+var qwertyChar    = ["Q","W","E","R","T","Y","U","I","O","P",
+	               "A","S","D","F","G","H","J","K","L",
+	             "SI", "Z","X","C","V","B","N","M","DEL",
+	            "DC1","DC2",",",   "Space",    ".","DC3"];
+
+var qwertyHex     = [0x51,0x57,0x45,0x52,0x54,0x59,0x55,0x49,0x4F,0x50,  // 0-9  QEERTYUIOP
+	               0x41,0x53,0x44,0x46,0x47,0x48,0x4A,0x4B,0x4C,     // 10-18 ASDFGHJKL
+	              0x0F, 0x5A,0x58,0x43,0x56,0x42,0x4E,0x4D, 0x7F,    // 19-27 siZXCVBNMdel
+	              0x11, 0x12,0x2C,       0x20,        0x2E, 0x13];   // 28-33 dc1dc2,Space.dc
+	
+     var x = cordx;
+     var y = cordy;
+	
+   if (y>1535 && y<1535+160) {
+     for (let i=0; i<10; i++) {
+       if (x>108*i && x<108*i+108) {
+        keyChar = qwertyChar[i];
+        keyHex = qwertyHex[i];
+       }
+      }
+     }
+	
+   if (y>1535+160 && y<1535+160*2) {
+     for (let i=0; i<9; i++) {
+       if (x>54+108*i && x<54+108*i+108) {
+        keyChar = qwertyChar[10+i];
+        keyHex = qwertyHex[10+i];
+	 }
+	}
+       }
+	
+   if (y>1535+160*2 && y<1535+160*3) {
+	   
+     for (let i=0; i<1; i++) {
+       if (x>108*i && x<54+108*i+108) {
+        keyChar = qwertyChar[19+i];
+        keyHex = qwertyHex[19+i];
+	 }
+	}
+     for (let i=0; i<7; i++) {
+       if (x>54+108+108*i && x<54+108+108*i+108) {
+        keyChar = qwertyChar[20+i];
+        keyHex = qwertyHex[20+i];
+	 }
+	}
+     for (let i=0; i<1; i++) {
+       if (x>54+108*8+108*i && x<54+108*8+108*i+108+54) {
+        keyChar = qwertyChar[27+i];
+        keyHex = qwertyHex[27+i];
+	 }
+	}
+      }
+	
+    if (y>1535+160*3 && y<1535+160*4) {
+     for (let i=0; i<1; i++) {
+       if (x>108*i && x<108*i+108+54) {
+        keyChar = qwertyChar[28+i];
+        keyHex = qwertyHex[28+i];
+	 }
+	}
+     for (let i=0; i<2; i++) {
+       if (x>54+108+108*i && x<54+108+108*i+108) {
+        keyChar = qwertyChar[29+i];
+        keyHex = qwertyHex[29+i];
+	 }
+	}
+     for (let i=0; i<1; i++) {
+       if (x>54+108*3+108*i && x<54+108*6+108*i+108) {
+        keyChar = qwertyChar[31+i];
+        keyHex = qwertyHex[31+i]; 
+	 }
+	}
+     for (let i=0; i<1; i++) {
+       if (x>54+108*7+108*i && x<54+108*7+108*i+108) {
+        keyChar = qwertyChar[32+i];
+        keyHex = qwertyHex[32+i]; 
+	 }
+	}
+    for (let i=0; i<1; i++) {
+       if (x>54+108*8+108*i && x<54+108*8+108*i+108+54) {
+        keyChar = qwertyChar[33+i];
+        keyHex = qwertyHex[33+i]; 
+	 }
+	}
+      } 
+	
+   }  // read_qwerty
+	
+    writeMessage();
+
+var ci = 16; var cj = 208; 
+function writeMessage() { 
+  var x = cordx;
+  var y = cordy;
+  if (x>0 && x<1080 && y>1536 && y<2175) {
+  readQwerty();
+  var keyC = keyChar; 
+  var canv = document.getElementById("canvas");
+  var ctx = canv.getContext('2d');
+  if(keyC == "SI") { 
+  } else if(keyC == "DEL") {
+  ctx.fillStyle = "white";
+  ctx.fillRect(0, 144, 1080, 1247);
+  ci=16; cj=208;
+  } else if(keyC == "DC1") { 
+  } else if(keyC == "DC2") {
+  } else if(keyC == "Space") {
+       if(ci>1080-48) {ci=16; cj+=64;}
+       if(cj>1392-64) {ci=16; cj=208;}
+	  ci+=48;
+  } else if(keyC == "DC3") {
+       if(cj>1392-64) {ci=16; cj=208;}
+	  ci=16; cj+=64;
+  } else {
+       if(ci>1080-48) {ci=16; cj+=64;}
+       if(cj>1392-64) {ci=16; cj=208;}
+       ctx.font = "48px Arial";
+       ctx.fillStyle = "red";
+       ctx.fillText(keyC, ci, cj);
+           ci+=48;
+       }  
+	  
+     }
+   }   // write_message
+	
+} // keypad
   
+	
 </script>
   
 	
