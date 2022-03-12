@@ -25,11 +25,11 @@ canv.setAttribute("height", "2400");
 // canv.setAttribute("border", "solid black 1px");
 document.getElementById("divCanv").appendChild(canv);
 	
-  /*  var cx=0, cy=0, cw=1080, ch=2400-112-112; // 2176
+    var cx=0, cy=0, cw=1080, ch=2400-112-112; // 2176
     var canvas = document.getElementById("canvas");
     var context = canvas.getContext('2d');
         
-        var image1 = new Image();  // dp 144
+       /* var image1 = new Image();  // dp 144
         image1.setAttribute('crossOrigin', 'anonymous');
         image1.src = 'dp2.png';
         image1.onload = function (e) {
@@ -39,6 +39,17 @@ document.getElementById("divCanv").appendChild(canv);
 	var h = 144;
           context.drawImage(image1, x, y, w, h);
         }; */
+	
+        var image2 = new Image();  // text 144
+        image2.setAttribute('crossOrigin', 'anonymous');
+        image2.src = 'text4.png';
+        image2.onload = function (e) {
+	var x = cx;
+	var y = ch-144-640-1+640;  // 1391+640=2031
+	var w = cw;
+	var h = 144;
+          context.drawImage(image2, x, y, w, h);
+        }; 
  
 </script>
  
