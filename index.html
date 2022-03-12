@@ -105,11 +105,14 @@ document.getElementById("divCanv").appendChild(canv);
         image1.setAttribute('crossOrigin', 'anonymous');
         image1.src = 'dp2.png'; 
         image1.onload = function (e) { chk = false;
+        var cx=0, cy=0, cw=1080, ch=2400-112-112; // 2176
+        var canv = document.getElementById("canvas");
+        var ctx = canv.getContext('2d');
         var x = cx;
 	var y = cy;
 	var w = cw;
 	var h = 144;
-          context.drawImage(image1, x, y, w, h);
+          ctx.drawImage(image1, x, y, w, h);
         }; }
 	 
        // chk=true; while(chk) {
