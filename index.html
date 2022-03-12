@@ -330,6 +330,7 @@ function writeMessage() {
 
 	
 function storeMessage() {
+	
         if (keyChar == "SI") {           // shift_in
                 
 	} else if (keyChar == "DEL") {    // delete
@@ -342,7 +343,7 @@ function storeMessage() {
                msgStr += " ";
                msgArr[ptr] = 0x20;
                ptr++;
-	} else if (keyChar == "DC3") {    // enter
+	} else if (keyChar == "DC3") {    // enter - new_line
                msgStr += "\n";
                msgArr[ptr] = 0x0A;
 		ptr++;
@@ -351,6 +352,29 @@ function storeMessage() {
                msgArr[ptr] = keyHex;
                ptr++;
                }
+	
+       /* if (keyHex == 0x0F) {           // shift_in
+                
+	} else if (keyHex == 0x7F) {    // delete
+               msgStr = "";
+               msgArr[ptr] = 0x00;
+               ptr = 0;
+        } else if (keyChar == 0x11) {    // ?123
+	} else if (keyChar == 0x12) {    // emoji
+	} else if (keyChar == 0x20) {  // space
+               msgStr += " ";
+               msgArr[ptr] = 0x20;
+               ptr++;
+	} else if (keyChar == 0x13) {    // enter
+               msgStr += "\n";
+               msgArr[ptr] = 0x0A;
+		ptr++;
+        } else {               
+               msgStr += keyChar;
+               msgArr[ptr] = keyHex;
+               ptr++;
+               } */
+	
     }
 	
 function writeCursor() {
@@ -363,7 +387,7 @@ function writeCursor() {
 	ctx.fillStyle = "white";
         ctx.fillRect(ci, cj-32, 4, 32);
         }, 0500);
-	}	 
+      }	 
   
 	
 </script>
