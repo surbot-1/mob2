@@ -81,8 +81,8 @@ document.getElementById("divCanv").appendChild(canvs);
 	
         ds2();
 	
-  function ds2() {
-    
+  function ds2() { 
+    cursor = setInterval(writeCursor, 1000);
     var cx=0, cy=0, cw=1080, ch=2400-112-112; // 2176
     var cvs = document.getElementById("canvas");
     var ctx = cvs.getContext('2d');
@@ -115,12 +115,12 @@ document.getElementById("divCanv").appendChild(canvs);
 	var image3 = new Image();  // keypad 640
         image3.setAttribute('crossOrigin', 'anonymous');
         image3.src = 'keypad1.png';
-        image3.onload = function (e) {
+        image3.onload = function (e) { 
 	var x = cx;
 	var y = ch-640-1;    // 1535
 	var w = cw;
 	var h = 640;
-          ctx.drawImage(image3, x, y, w, h);
+          ctx.drawImage(image3, x, y, w, h); 
         };
 	  
     function handleEnd(evt) {
@@ -137,9 +137,9 @@ document.getElementById("divCanv").appendChild(canvs);
        } else if (x>880 && x<924 && y>0 && y<144) {  // voice call
        } else if (x>1000 && x<1040 && y>0 && y<144) {  // option
        } else if (x>0 && x<1080 && y>144 && y<1392) {  // message_field
-	       clearInterval(cursor);
+	       
        } else if (x>0 && x<1080 && y>1392 && y<1536) { // type_field
-	       cursor = setInterval(writeCursor, 1000);
+	       
        } else if (x>0 && x<1080 && y>1536 && y<2176) {  // keypad
 	       keypad(); 
        }
@@ -287,7 +287,7 @@ function writeMessage() {
        // if(ci>1080-48) {ci=16; cj+=64;}
        // if(cj>1392-64) {ci=16; cj=208;}
        ctx.fillStyle = "white";
-       ctx.fillRect(ci, cj-24, 4, 48);
+       ctx.fillRect(ci, cj-48, 4, 48);
        ctx.font = "48px Arial";
        ctx.fillStyle = "red";
        ctx.fillText(keyC, ci, cj);
@@ -306,10 +306,10 @@ function writeCursor() {
         var ctx = cvs.getContext('2d');
 	
         ctx.fillStyle = "blue";
-        ctx.fillRect(ci, cj-24, 4, 48);
+        ctx.fillRect(ci, cj-48, 4, 48);
 	setTimeout( function() {
 	ctx.fillStyle = "white";
-        ctx.fillRect(ci, cj-24, 4, 48);
+        ctx.fillRect(ci, cj-48, 4, 48);
         }, 0500);
 	}	 
   
