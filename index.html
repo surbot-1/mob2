@@ -146,18 +146,18 @@ document.getElementById("divCanv").appendChild(canvs);
 	  
    }
 	
-</script>
+
  
-	
-<script>
 	
 
 	
+
+   var ci = 16; var cj = 208;
 function keypad() {
 	
      var keyChar;
      var keyHex;
-     readQwerty();
+     writeMessage();
 function readQwerty() {
 
 var qwertyChar    = ["Q","W","E","R","T","Y","U","I","O","P",
@@ -248,9 +248,9 @@ var qwertyHex     = [0x51,0x57,0x45,0x52,0x54,0x59,0x55,0x49,0x4F,0x50,  // 0-9 
 	
    }  // read_qwerty
 	
-    writeMessage();
+   // writeMessage();
 
-var ci = 16; var cj = 208; 
+// var ci = 16; var cj = 208; 
 function writeMessage() { 
   var cvs = document.getElementById("canvas");
   var ctx = cvs.getContext('2d');
