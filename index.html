@@ -50,7 +50,7 @@ document.getElementById("divCanv").appendChild(canv);
 	var h = 144;
           context.drawImage(image2, x, y, w, h);
         }; 
- 
+        display1();
 </script>
  
 <script>
@@ -82,7 +82,7 @@ document.getElementById("divCanv").appendChild(canv);
   var cordx, cordy;
   
   s1 = true;
-  home1();
+  // display1();
   
  /* action();
   function action() {
@@ -94,7 +94,7 @@ document.getElementById("divCanv").appendChild(canv);
   
 <script>
   alert('1'); 
- function home1() { var chk=true; while(chk) {
+ function display1() { var chk=true; while(chk) {
     
     var cx=0, cy=0, cw=1080, ch=2400-112-112; // 2176
     var canvas = document.getElementById("canvas");
