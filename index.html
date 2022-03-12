@@ -29,6 +29,7 @@ document.getElementById("divCanv").appendChild(canv);
 	
 <script>
 	
+  var cordx, cordy;
 	ds1();
   function ds1() {
 	
@@ -57,6 +58,21 @@ document.getElementById("divCanv").appendChild(canv);
 	var h = 144;
           context.drawImage(image2, x, y, w, h);
         }; 
+	  
+       function handleEnd(evt) {
+       evt.preventDefault();
+       var ele = document.getElementById("canvas");
+       var ctx = ele.getContext("2d");
+       var touches = evt.changedTouches;
+       var  x = touches[0].pageX; cordx = x;
+       var  y = touches[0].pageY; cordy = y;
+	  
+       if (x>0 && x<1080 && y>2032 && y<2176) { 
+           ds2();
+           }
+       }
+	 
+       canvas.addEventListener("touchend", handleEnd, false);
 	  
    }
 	
