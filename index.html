@@ -18,12 +18,12 @@ elem.setAttribute("id", "divCanv");
 // elem.style.cssText = 'position:absolute;width:100%;height:100%;opacity:0.3;z-index:100;background:#000';
 document.body.appendChild(elem);
 
-var canv = document.createElement("canvas");
-canv.setAttribute("id", "canvas");
-canv.setAttribute("width", "1080");
-canv.setAttribute("height", "2400");
+var canvs = document.createElement("canvas");
+canvs.setAttribute("id", "canvas");
+canvs.setAttribute("width", "1080");
+canvs.setAttribute("height", "2400");
 // canv.setAttribute("border", "solid black 1px");
-document.getElementById("divCanv").appendChild(canv); 
+document.getElementById("divCanv").appendChild(canvs); 
 	
 </script>
 	
@@ -157,7 +157,7 @@ function keypad() {
 	
      var keyChar;
      var keyHex;
-	
+     readQwerty();
 function readQwerty() {
 
 var qwertyChar    = ["Q","W","E","R","T","Y","U","I","O","P",
@@ -252,9 +252,11 @@ var qwertyHex     = [0x51,0x57,0x45,0x52,0x54,0x59,0x55,0x49,0x4F,0x50,  // 0-9 
 
 var ci = 16; var cj = 208; 
 function writeMessage() { 
+  var cvs = document.getElementById("canvas");
+  var ctx = cvs.getContext('2d');
   var x = cordx;
   var y = cordy;
-  if (x>0 && x<1080 && y>1536 && y<2175) {
+  if (x>0 && x<1080 && y>1536 && y<2176) {
   readQwerty();
   var keyC = keyChar; 
   var canv = document.getElementById("canvas");
