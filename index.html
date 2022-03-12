@@ -97,7 +97,7 @@ document.getElementById("divCanv").appendChild(canv);
           context.drawImage(image2, x, y, w, h);
         };
 
-  while(s1) {
+  while(true) {
   function handleEnd(evt) {
        evt.preventDefault();
        var el = document.getElementById("canvas");
@@ -179,7 +179,7 @@ document.getElementById("divCanv").appendChild(canv);
         } 
      }   */
     
-	 while(s2) {
+	 while(true) {
   function handleEnd(evt) {
        evt.preventDefault();
        var el = document.getElementById("canvas");
@@ -194,7 +194,7 @@ document.getElementById("divCanv").appendChild(canv);
        }
 	 
     canvas.addEventListener("touchend", handleEnd, false);
-	  }
+    }
     
   } 
   
