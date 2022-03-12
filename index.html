@@ -11,14 +11,12 @@
 <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
 	
 <script>
-  
-var div = document.createElement("div");
-div.setAttribute("id", "divCan");
-div.setAttribute("width", "1080");
-div.setAttribute("height", "2400");
-div.setAttribute("border", "solid black 1px");
-document.body.appendChild(div);
-  
+	
+var elem = document.createElement('div');
+clem.setAttribute("id", "divCanv");
+elem.style.cssText = 'position:absolute;width:100%;height:100%;opacity:0.3;z-index:100;background:#000';
+document.body.appendChild(elem);
+
 var canv = document.createElement("canvas");
 canv.setAttribute("id", "canvas");
 canv.setAttribute("width", "1080");
