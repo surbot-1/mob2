@@ -169,7 +169,7 @@ var qwertyHex     = [0x51,0x57,0x45,0x52,0x54,0x59,0x55,0x49,0x4F,0x50,  // 0-9 
 	
 var ci = 16; var cj = 208;
 function keypad() {
-	
+     clearInterval(cursor);
      var keyChar;
      var keyHex;
 	
@@ -298,7 +298,7 @@ function writeMessage() {
 	  
      }
    }   // write_message
-		 	
+cursor = setInterval(writeCursor, 1000); 	
 } // keypad
 	
 function writeCursor() {
