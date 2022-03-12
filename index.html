@@ -29,7 +29,7 @@ document.getElementById("divCanv").appendChild(canvs);
 	
 <script>
 	
-  var cordx, cordy, cursor;
+  var cordx, cordy;
      // ds1();
   function ds1() {
 	
@@ -156,8 +156,12 @@ document.getElementById("divCanv").appendChild(canvs);
 
 	
 
-
-
+var msgBuf = new ArrayBuffer(256);
+var msgView = new DataView(msgBuf);
+msgView.setUint8(0, 125);
+msgView.getUint8(0); // 125
+var msgArr = new Uint8Array(msgBuf);
+var msgStr;
 
 var qwertyChar    = ["Q","W","E","R","T","Y","U","I","O","P",
 	               "A","S","D","F","G","H","J","K","L",
@@ -166,17 +170,22 @@ var qwertyChar    = ["Q","W","E","R","T","Y","U","I","O","P",
 
 var qwertyHex     = [0x51,0x57,0x45,0x52,0x54,0x59,0x55,0x49,0x4F,0x50,  // 0-9  QEERTYUIOP
 	               0x41,0x53,0x44,0x46,0x47,0x48,0x4A,0x4B,0x4C,     // 10-18 ASDFGHJKL
-	              0x0F, 0x5A,0x58,0x43,0x56,0x42,0x4E,0x4D, 0x7F,    // 19-27 siZXCVBNMdel
-	              0x11, 0x12,0x2C,       0x20,        0x2E, 0x13];   // 28-33 dc1dc2,Space.dc
+	             0x0F, 0x5A,0x58,0x43,0x56,0x42,0x4E,0x4D, 0x7F,    // 19-27 siZXCVBNMdel
+	             0x11, 0x12,0x2C,       0x20,        0x2E, 0x13];   // 28-33 dc1dc2,Space.dc
 	
 var ci = 16; var cj = 208;
-function keypad() {
-     clearInterval(cursor);
-     var keyChar;
-     var keyHex;
+var cursor; var ptr=0;
+var keyChar;
+var keyHex;
 	
+function keypad() {
+	
+     clearInterval(cursor);
      writeMessage();
-     writeCursor();
+     storeMessage();
+     cursor = setInterval(writeCursor, 1000); 	
+	
+   } // keypad
 	
  function readQwerty() {
 	
@@ -270,9 +279,9 @@ function keypad() {
 	
    }  // read_qwerty
 	
-  
+ 
 
-// var ci = 16; var cj = 208; 
+
 function writeMessage() { 
   var cvs = document.getElementById("canvas");
   var ctx = cvs.getContext('2d');
@@ -318,8 +327,31 @@ function writeMessage() {
 	  
      }
    }   // write_message
-cursor = setInterval(writeCursor, 1000); 	
-} // keypad
+
+	
+function storeMessage() {
+        if (keyChar == "SI") {           // shift_in
+                
+	} else if (keyChar == "DEL") {    // delete
+               msgStr = "";
+               msgArr[ptr] = 0x00;
+               ptr = 0;
+        } else if (keyChar == "DC1") {    // ?123
+	} else if (keyChar == "DC2") {    // emoji
+	} else if (keyChar == "Space") {  // space
+               msgStr += " ";
+               msgArr[ptr] = 0x20;
+               ptr++;
+	} else if (keyChar == "DC3") {    // enter
+               msgStr += "\n";
+               msgArr[ptr] = 0x0A;
+		ptr++;
+        } else {               
+               msgStr += keyChar;
+               msgArr[ptr] = keyHex;
+               ptr++;
+               }
+    }
 	
 function writeCursor() {
         var cvs = document.getElementById("canvas");
