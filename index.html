@@ -36,6 +36,9 @@ document.getElementById("divCanv").appendChild(canv);
     var cx=0, cy=0, cw=1080, ch=2400-112-112; // 2176
     var canvas = document.getElementById("canvas");
     var context = canvas.getContext('2d');
+	  
+	context.fillStyle = "white";
+        context.fillRect(0, 0, 1080, 2400);
         
         var image1 = new Image();  // dp 144
         image1.setAttribute('crossOrigin', 'anonymous');
@@ -83,6 +86,9 @@ document.getElementById("divCanv").appendChild(canv);
     var cx=0, cy=0, cw=1080, ch=2400-112-112; // 2176
     var cvs = document.getElementById("canvas");
     var ctx = cvs.getContext('2d');
+	  
+	ctx.fillStyle = "white";
+        ctx.fillRect(0, 0, 1080, 2400);
 	   
         var image1 = new Image();  // dp 144
         image1.setAttribute('crossOrigin', 'anonymous');
