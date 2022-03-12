@@ -277,17 +277,23 @@ function writeMessage() {
   } else if(keyC == "DC1") { 
   } else if(keyC == "DC2") {
   } else if(keyC == "Space") {
+       ctx.fillStyle = "white";
+       ctx.fillRect(ci, cj-32, 4, 32);
+	  ci+=48;
        if(ci>1080-48) {ci=16; cj+=64;}
        if(cj>1392-64) {ci=16; cj=208;}
-	  ci+=48;
+	  
   } else if(keyC == "DC3") {
-       if(cj>1392-64) {ci=16; cj=208;}
+       ctx.fillStyle = "white";
+       ctx.fillRect(ci, cj-32, 4, 32);
 	  ci=16; cj+=64;
+       if(cj>1392-64) {ci=16; cj=208;}
+	  
   } else {
        // if(ci>1080-48) {ci=16; cj+=64;}
        // if(cj>1392-64) {ci=16; cj=208;}
        ctx.fillStyle = "white";
-       ctx.fillRect(ci, cj-48, 4, 48);
+       ctx.fillRect(ci, cj-32, 4, 32);
        ctx.font = "48px Arial";
        ctx.fillStyle = "red";
        ctx.fillText(keyC, ci, cj);
@@ -306,10 +312,10 @@ function writeCursor() {
         var ctx = cvs.getContext('2d');
 	
         ctx.fillStyle = "blue";
-        ctx.fillRect(ci, cj-48, 4, 48);
+        ctx.fillRect(ci, cj-32, 4, 32);
 	setTimeout( function() {
 	ctx.fillStyle = "white";
-        ctx.fillRect(ci, cj-48, 4, 48);
+        ctx.fillRect(ci, cj-32, 4, 32);
         }, 0500);
 	}	 
   
