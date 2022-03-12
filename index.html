@@ -191,10 +191,22 @@ function keypad() {
      }
 	
    if (y>1535+160 && y<1535+160*2) {
-     for (let i=0; i<9; i++) {
-       if (x>54+108*i && x<54+108*i+108) {
+     for (let i=0; i<1; i++) {
+       if (x>108*i && x<108*i+108+54) {
         keyChar = qwertyChar[10+i];
         keyHex = qwertyHex[10+i];
+	 }
+	}
+     for (let i=0; i<7; i++) {
+       if (x>54+108*i && x<54+108*i+108) {
+        keyChar = qwertyChar[10+i];
+        keyHex = qwertyHex[11+i];
+	 }
+	}
+     for (let i=0; i<1; i++) {
+       if (x>54+108*i && x<54+108*i+108+54) {
+        keyChar = qwertyChar[10+i];
+        keyHex = qwertyHex[18+i];
 	 }
 	}
        }
