@@ -123,18 +123,22 @@ document.getElementById("divCanv").appendChild(canv);
           ctx.drawImage(image3, x, y, w, h);
         };
 	  
-       function handleEnd(evt) {
+    function handleEnd(evt) {
 	       
        var touches = evt.changedTouches;
        var  x = touches[0].pageX; cordx = x;
        var  y = touches[0].pageY; cordy = y;
 	  
-       if (x>0 && x<72 && y>0 && y<144) { 
+       if (x>0 && x<72 && y>0 && y<144) { // bk
            ds1();
-           }
-        }
-	 
-       cvs.addEventListener("touchend", handleEnd, false);
+       } else if (x>72 && x<108 && y>0 && y<144) {  // dp
+       } else if (x>108 && x<740 && y>0 && y<144) {  // space
+       } else if (x>740 && x<800 && y>0 && y<144) {  // video call
+       } else if (x>880 && x<924 && y>0 && y<144) {  // voice call
+       } else if (x>1000 && x<1040 && y>0 && y<144) {  // option
+       }
+     }
+     cvs.addEventListener("touchend", handleEnd, false);
 	  
    }
 	
