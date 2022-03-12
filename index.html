@@ -93,34 +93,36 @@ document.getElementById("divCanv").appendChild(canv);
 </script>
   
 <script>
-  alert('1'); var c1 = true, c2 = true;
- function display1() { while(c1 && c2) {
-	
+  alert('1'); 
+ function display1() {
+    var chk;
     var cx=0, cy=0, cw=1080, ch=2400-112-112; // 2176
     var canvas = document.getElementById("canvas");
     var context = canvas.getContext('2d');
-        
+	    
+        chk=true; while(chk) {
         var image1 = new Image();  // dp 144
         image1.setAttribute('crossOrigin', 'anonymous');
         image1.src = 'dp2.png';
-        image1.onload = function (e) { c1 = false;
+        image1.onload = function (e) { chk = false;
         var x = cx;
 	var y = cy;
 	var w = cw;
 	var h = 144;
           context.drawImage(image1, x, y, w, h);
-        };
-	
+        }; }
+	 
+        chk=true; while(chk) {
 	var image2 = new Image();  // text 144
         image2.setAttribute('crossOrigin', 'anonymous');
         image2.src = 'text4.png';
-        image2.onload = function (e) { c2 = false;
+        image2.onload = function (e) { chk = false;
 	var x = cx;
 	var y = ch-144-640-1+640;  // 1391+640=2031
 	var w = cw;
 	var h = 144;
           context.drawImage(image2, x, y, w, h);
-        }; 
+        }; }
 
 /*  while(true) {
   function handleEnd(evt) {
@@ -139,7 +141,7 @@ document.getElementById("divCanv").appendChild(canv);
     canvas.addEventListener("touchend", handleEnd, false);
     } */
    
- } }
+ } 
   
 </script>
 
