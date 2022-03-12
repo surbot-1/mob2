@@ -16,14 +16,14 @@ var elem = document.createElement('div');
 clem.setAttribute("id", "divCanv");
 elem.style.cssText = 'position:absolute;width:100%;height:100%;opacity:0.3;z-index:100;background:#000';
 document.body.appendChild(elem);
-
+/*
 var canv = document.createElement("canvas");
 canv.setAttribute("id", "canvas");
 canv.setAttribute("width", "1080");
 canv.setAttribute("height", "2400");
 // canv.setAttribute("border", "solid black 1px");
 document.getElementById("divCanv").appendChild(canv);
- 
+ */
 </script>
  
 <script>
@@ -55,7 +55,7 @@ document.getElementById("divCanv").appendChild(canv);
   var cordx, cordy;
   
   s1 = true;
-  screen1();
+ // screen1();
   
  /* action();
   function action() {
@@ -69,7 +69,7 @@ document.getElementById("divCanv").appendChild(canv);
   alert('1'); 
  function screen1() { 
 	
-    var cx=0, cy=0, cw=1080, ch=2400-112-112; // 2176
+  /*  var cx=0, cy=0, cw=1080, ch=2400-112-112; // 2176
     var canvas = document.getElementById("canvas");
     var context = canvas.getContext('2d');
         
@@ -93,7 +93,7 @@ document.getElementById("divCanv").appendChild(canv);
 	var w = cw;
 	var h = 144;
           context.drawImage(image2, x, y, w, h);
-        };
+        }; */
 
 /*  while(true) {
   function handleEnd(evt) {
@@ -120,7 +120,7 @@ document.getElementById("divCanv").appendChild(canv);
   alrrt('2');
   function screen2() {
 	
-    var cx=0, cy=0, cw=1080, ch=2400-112-112; // 2176
+  /*  var cx=0, cy=0, cw=1080, ch=2400-112-112; // 2176
     var canvas = document.getElementById("canvas");
     var context = canvas.getContext('2d');
 	 
@@ -144,7 +144,7 @@ document.getElementById("divCanv").appendChild(canv);
 	var w = cw;
 	var h = 640;
           context.drawImage(image3, x, y, w, h);
-        };
+        }; */
 	 
      /*  var cordx, cordy;
        var ci = 16; var cj = 208; 
@@ -177,7 +177,7 @@ document.getElementById("divCanv").appendChild(canv);
         } 
      }   */
     
-	 while(true) {
+/* while(true) {
   function handleEnd(evt) {
        evt.preventDefault();
        var el = document.getElementById("canvas");
@@ -192,7 +192,7 @@ document.getElementById("divCanv").appendChild(canv);
        }
 	 
     canvas.addEventListener("touchend", handleEnd, false);
-    }
+    } */
     
   } 
   
