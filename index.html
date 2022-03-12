@@ -29,7 +29,7 @@ document.getElementById("divCanv").appendChild(canvs);
 	
 <script>
 	
-  var cordx, cordy;
+  var cordx, cordy, cursor;
      // ds1();
   function ds1() {
 	
@@ -137,8 +137,10 @@ document.getElementById("divCanv").appendChild(canvs);
        } else if (x>880 && x<924 && y>0 && y<144) {  // voice call
        } else if (x>1000 && x<1040 && y>0 && y<144) {  // option
        } else if (x>0 && x<1080 && y>144 && y<1392) {  // message_field
-       } else if (x>0 && x<1080 && y>1392 && y<1536) {  // type_field
-       }  else if (x>0 && x<1080 && y>1536 && y<2176) {  // keypad
+	       clearInterval(cursor);
+       } else if (x>0 && x<1080 && y>1392 && y<1536) { // type_field
+	       cursor = setInterval(writeCursor, 1000);
+       } else if (x>0 && x<1080 && y>1536 && y<2176) {  // keypad
 	       keypad(); 
        }
      }
@@ -170,7 +172,9 @@ function keypad() {
 	
      var keyChar;
      var keyHex;
+	
      writeMessage();
+     writeCursor();
 	
  function readQwerty() {
 	
@@ -280,18 +284,28 @@ function writeMessage() {
        if(cj>1392-64) {ci=16; cj=208;}
 	  ci=16; cj+=64;
   } else {
-       if(ci>1080-48) {ci=16; cj+=64;}
-       if(cj>1392-64) {ci=16; cj=208;}
+       // if(ci>1080-48) {ci=16; cj+=64;}
+       // if(cj>1392-64) {ci=16; cj=208;}
        ctx.font = "48px Arial";
        ctx.fillStyle = "red";
        ctx.fillText(keyC, ci, cj);
            ci+=48;
+       if(ci>1080-48) {ci=16; cj+=64;}
+       if(cj>1392-64) {ci=16; cj=208;}
        }  
 	  
      }
    }   // write_message
-	
+		 	
 } // keypad
+	
+function writeCursor() {
+        var cvs = document.getElementById("canvas");
+        var ctx = cvs.getContext('2d');
+	function cur() {
+        ctx.fillStyle = "red";
+        ctx.fillRect(ci, cj, 4, 48);
+	}	 
   
 	
 </script>
