@@ -304,7 +304,11 @@ function writeCursor() {
         var ctx = cvs.getContext('2d');
 	
         ctx.fillStyle = "red";
-        ctx.fillRect(ci, cj, 4, 48);
+        ctx.fillRect(ci, cj-64, 4, 48);
+	setTimeout( function() {
+	ctx.fillStyle = "white";
+        ctx.fillRect(ci, cj-64, 4, 48);
+        }, 0500);
 	}	 
   
 	
