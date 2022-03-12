@@ -130,12 +130,16 @@ document.getElementById("divCanv").appendChild(canv);
        var  y = touches[0].pageY; cordy = y;
 	  
        if (x>0 && x<72 && y>0 && y<144) { // bk
-           ds1();
+              ds1();
        } else if (x>72 && x<108 && y>0 && y<144) {  // dp
        } else if (x>108 && x<740 && y>0 && y<144) {  // space
        } else if (x>740 && x<800 && y>0 && y<144) {  // video call
        } else if (x>880 && x<924 && y>0 && y<144) {  // voice call
        } else if (x>1000 && x<1040 && y>0 && y<144) {  // option
+       } else if (x>0 && x<1080 && y>144 && y<1392) {  // message_field
+       } else if (x>0 && x<1080 && y>1392 && y<1536) {  // type_field
+       } else if (x>0 && x<1080 && y>1536 && y<2176) {  // keypad
+	       keypad();
        }
      }
      cvs.addEventListener("touchend", handleEnd, false);
@@ -144,26 +148,15 @@ document.getElementById("divCanv").appendChild(canv);
 	
 </script>
  
+	
 <script>
-  /*
-  var cordx, cordy;
-  function handleEnd(evt) {
-       evt.preventDefault();
-       var el = document.getElementById("canvas");
-       var ctx = el.getContext("2d");
-       var touches = evt.changedTouches;
-       var  x = touches[0].pageX; cordx = x;
-       var  y = touches[0].pageY; cordy = y;
-	  
-       if (x>0 && x<1080 && y>0 && y<2176) { 
-       action();
-           }
-       }
-	 
-    canvas.addEventListener("touchend", handleEnd, false);
-     */
+	
+  function keypad() {
+  }
+  
 </script>
   
+	
 <script>
   alert('a');
   var s1 = false;
