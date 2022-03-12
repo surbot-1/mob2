@@ -25,11 +25,13 @@ canv.setAttribute("height", "2400");
 // canv.setAttribute("border", "solid black 1px");
 document.getElementById("divCanv").appendChild(canv);
 	
+  function ds1() {
+	
     var cx=0, cy=0, cw=1080, ch=2400-112-112; // 2176
     var canvas = document.getElementById("canvas");
     var context = canvas.getContext('2d');
         
-     /*   var image1 = new Image();  // dp 144
+        var image1 = new Image();  // dp 144
         image1.setAttribute('crossOrigin', 'anonymous');
         image1.src = 'dp2.png';
         image1.onload = function (e) {
@@ -38,7 +40,7 @@ document.getElementById("divCanv").appendChild(canv);
 	var w = cw;
 	var h = 144;
           context.drawImage(image1, x, y, w, h);
-        }; */
+        }; 
 	
         var image2 = new Image();  // text 144
         image2.setAttribute('crossOrigin', 'anonymous');
@@ -50,28 +52,51 @@ document.getElementById("divCanv").appendChild(canv);
 	var h = 144;
           context.drawImage(image2, x, y, w, h);
         }; 
+	  
+   }
+	
         ds2();
 	
-	function ds2() {
-	 // var c1=true; 
-/// while(c1) {
+  function ds2() {
     
-  //  var cx=0, cy=0, cw=1080, ch=2400-112-112; // 2176
+    var cx=0, cy=0, cw=1080, ch=2400-112-112; // 2176
     var cvs = document.getElementById("canvas");
     var ctx = cvs.getContext('2d');
-	    
-        
+	   
         var image1 = new Image();  // dp 144
-       // image1.setAttribute('crossOrigin', 'anonymous');
+        image1.setAttribute('crossOrigin', 'anonymous');
         image1.src = 'dp2.png'; 
-        image1.onload = function (e) { // c1 = false;
-      //  var x = cx;
-      // var y = cy;
-// var w = cw;
-//var h = 144;
+        image1.onload = function (e) {
+        var x = cx;
+        var y = cy;
+        var w = cw;
+        var h = 144;
           ctx.drawImage(image1, 0, 0,1080,144);
         }; 
- }
+	  
+	var image2 = new Image();  // text 144
+        image2.setAttribute('crossOrigin', 'anonymous');
+        image2.src = 'text4.png';
+        image2.onload = function (e) {
+	var x = cx;
+	var y = ch-144-640-1;  // 1391
+	var w = cw;
+	var h = 144;
+          ctx.drawImage(image2, x, y, w, h);
+        };
+	  
+	var image3 = new Image();  // keypad 640
+        image3.setAttribute('crossOrigin', 'anonymous');
+        image3.src = 'keypad1.png';
+        image3.onload = function (e) {
+	var x = cx;
+	var y = ch-640-1;    // 1535
+	var w = cw;
+	var h = 640;
+          ctx.drawImage(image3, x, y, w, h);
+        };
+	  
+   }
 	
 </script>
  
@@ -116,7 +141,7 @@ document.getElementById("divCanv").appendChild(canv);
   
 <script>
   alert('1'); 
- function ds1() {
+ function screen1() {
 	 // var c1=true; 
 /// while(c1) {
     
