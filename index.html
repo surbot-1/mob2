@@ -112,10 +112,10 @@ document.getElementById("divCanv").appendChild(canv);
           context.drawImage(image1, x, y, w, h);
         }; }
 	 
-        
+        chk=true; while(chk) {
 	var image2 = new Image();  // text 144
         image2.setAttribute('crossOrigin', 'anonymous');
-        image2.src = 'text4.png'; chk=true; while(chk) {
+        image2.src = 'text4.png'; 
         image2.onload = function (e) { chk = false;
 	var x = cx;
 	var y = ch-144-640-1+640;  // 1391+640=2031
