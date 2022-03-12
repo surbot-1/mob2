@@ -94,14 +94,14 @@ document.getElementById("divCanv").appendChild(canv);
   
 <script>
   alert('1'); 
- function home1() {  var chk=true; while(chk) {
+ function home1() { var chk=true; while(chk) {
     
     var cx=0, cy=0, cw=1080, ch=2400-112-112; // 2176
     var canvas = document.getElementById("canvas");
     var context = canvas.getContext('2d');
 	    
         
-     /*   var image1 = new Image();  // dp 144
+        var image1 = new Image();  // dp 144
         image1.setAttribute('crossOrigin', 'anonymous');
         image1.src = 'dp2.png'; 
         image1.onload = function (e) { chk = false;
@@ -110,9 +110,9 @@ document.getElementById("divCanv").appendChild(canv);
 	var w = cw;
 	var h = 144;
           context.drawImage(image1, x, y, w, h);
-        }; */
+        }; 
 	 
-        chk=true; while(chk) {
+      /*  chk=true; while(chk) {
 	var image2 = new Image();  // text 144
         image2.setAttribute('crossOrigin', 'anonymous');
         image2.src = 'text4.png'; 
@@ -122,7 +122,7 @@ document.getElementById("divCanv").appendChild(canv);
 	var w = cw;
 	var h = 144;
           context.drawImage(image2, x, y, w, h);
-        }; 
+        }; */
 
  /* chk=true; while(chk) {
   function handleEnd(evt) {
