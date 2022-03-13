@@ -8,6 +8,7 @@
   
 <body>
 
+<script src="ubantufont.js"></script>
 <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
 	
 <script>
@@ -391,27 +392,46 @@ function writeCursor() {
   
 	
 </script>
-  
 	
 <script>
-/*  alert('a');
-  var s1 = false;
-  var s2 = false;
-  var s3 = false; 
-  var s4 = false;
-  var cordx, cordy;
-  
-  s1 = true;
-  // display1(); */
-  
- /* action();
-  function action() {
-  var x=cordx; var y=cordy;
-    screen1();
-  } */
-  
+
+function displayChar() {
+        var cb = [0b10000000,0b01000000,0b00100000,0b00010000
+		  0b00001000,0b00000100,0b00000010,0b00000001];
+        var fb;
+	var cvs = document.getElementById("canvas");
+        var ctx = cvs.getContext('2d');
+        var imgData = ctx.createImageData(24, 32);
+        // imgData.data[0] = ubantuFont[0];
+        var fontBuf = new ArrayBuffer(24*4*32);
+        var fontView = new Uint8Array(buffer);
+            var k=0;
+        for (let i=0; i<3*32; i++) {
+            for (let j=0; j<8; j++) {
+                 fb = ubantuFont[i+j] & cb[j];  //0b10000000;
+                 if (fb) {
+		   fontView[i+j+k+0] = 0xFF;
+                 } else {
+		   fontView[i+j+k+0] = 0x00; 
+	         }
+		   fontView[i+j+k+1] = 0x00;
+		   fontView[i+j+k+2] = 0x00;
+		   fontView[i+j+k+3] = 0xFF;
+		    k+=4;
+              }
+          }
+        for (let i=0; i<24*4*32; i++) {
+             imgData.data[i] = fontView[i];
+              }
+        ctx.putImageData(imgData,16,208);
+     }
+    
+	
 </script>
-  
+
+	
+	
+	
 <script>
 /*  alert('1'); 
  function screen1() {
