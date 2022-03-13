@@ -393,9 +393,54 @@ function writeCursor() {
 	
 </script>
 	
+	
+	
 <script>
+	      
          displayChar();
 function displayChar() {
+     
+        var cnv = document.getElementById("canvas");
+        var ctx = cnv.getContext('2d');
+        var imgData = ctx.createImageData(24, 48);
+        
+        var fontBuf = new ArrayBuffer(24*4*48);
+        var fontView = new Uint8Array(fontBuf);
+        
+	var cb = [0x80,0x40,0x20,0x10,0x08,0x04,0x02,0x01];
+	var fb; var k=0;
+        for (let i=0; i<3*48; i++) { 
+            for (let j=0; j<8; j++) {
+                 fb = font2448[3*48*33+i] & cb[j]; 
+                 if (fb) {
+		   fontView[k+0] = 0xFF;
+                   fontView[k+1] = 0x00;
+		   fontView[k+2] = 0x00;
+		   fontView[k+3] = 0xFF;
+		    k+=4; 
+                   } else {
+		   fontView[k+0] = 0xFF; 
+		   fontView[k+1] = 0xFF;
+		   fontView[k+2] = 0xFF;
+		   fontView[k+3] = 0xFF;
+		    k+=4; 
+                   }
+		  
+              }
+          }
+        for (let i=0; i<24*4*48; i++) {
+             imgData.data[i] = fontView[i];
+              }
+        ctx.putImageData(imgData,16,208);  
+     } 
+	
+</script>
+
+	
+<script>
+	
+        // displayChar1();
+function displayChar1() {
         var cb = [0b10000000,0b01000000,0b00100000,0b00010000
 		  0b00001000,0b00000100,0b00000010,0b00000001];
         var fb;
